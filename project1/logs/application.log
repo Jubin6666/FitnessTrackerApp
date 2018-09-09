@@ -1,0 +1,70 @@
+2018-09-09 15:10:21,022 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-3 - Database [default] initialized at jdbc:sqlite:db//sample.db
+2018-09-09 15:10:21,030 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-3 - Creating Pool for datasource 'default'
+2018-09-09 15:10:21,884 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-3 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-09-09 15:10:22,175 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-3 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-09-09 15:10:22,180 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-3 - Application started (Dev)
+2018-09-09 15:10:23,079 [ERROR] from application in application-akka.actor.default-dispatcher-2 - 
+
+! @797nj6dmk - Internal server error, for (POST) [/locationupdate] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[NumberFormatException: null]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:251)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:178)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:363)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:361)
+	at scala.concurrent.Future.$anonfun$recoverWith$1(Future.scala:414)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:37)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:60)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:91)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:81)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:91)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:43)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.NumberFormatException: null
+	at java.lang.Integer.parseInt(Integer.java:542)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at controllers.HomeController.handleupdates(HomeController.java:63)
+	at router.Routes$$anonfun$routes$1.$anonfun$applyOrElse$6(Routes.scala:124)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:134)
+	at play.core.routing.HandlerInvokerFactory$$anon$3.resultCall(HandlerInvoker.scala:133)
+	at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$8$$anon$2$$anon$1.invocation(HandlerInvoker.scala:108)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:88)
+	at play.http.DefaultActionCreator$1.call(DefaultActionCreator.java:31)
+	at play.core.j.JavaAction.$anonfun$apply$8(JavaAction.scala:138)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:655)
+	at scala.util.Success.$anonfun$map$1(Try.scala:251)
+	at scala.util.Success.map(Try.scala:209)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:289)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:29)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:29)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:60)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:56)
+	at play.api.libs.streams.Execution$trampoline$.execute(Execution.scala:70)
+	at play.core.j.HttpExecutionContext.execute(HttpExecutionContext.scala:48)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:68)
+	at scala.concurrent.impl.Promise$KeptPromise$Kept.onComplete(Promise.scala:368)
+	at scala.concurrent.impl.Promise$KeptPromise$Kept.onComplete$(Promise.scala:367)
+	at scala.concurrent.impl.Promise$KeptPromise$Successful.onComplete(Promise.scala:375)
+	at scala.concurrent.impl.Promise.transform(Promise.scala:29)
+	at scala.concurrent.impl.Promise.transform$(Promise.scala:27)
+	at scala.concurrent.impl.Promise$KeptPromise$Successful.transform(Promise.scala:375)
+	at scala.concurrent.Future.map(Future.scala:289)
+	at scala.concurrent.Future.map$(Future.scala:289)
+	at scala.concurrent.impl.Promise$KeptPromise$Successful.map(Promise.scala:375)
+	at scala.concurrent.Future$.apply(Future.scala:655)
+	at play.core.j.JavaAction.apply(JavaAction.scala:138)
+	at play.api.mvc.Action.$anonfun$apply$2(Action.scala:96)
+	at scala.concurrent.Future.$anonfun$flatMap$1(Future.scala:304)
+	... 13 common frames omitted
+2018-09-09 16:45:18,382 [WARN] from com.zaxxer.hikari.pool.HikariPool in HikariPool-1 housekeeper - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h32m56s930ms974µs890ns).
